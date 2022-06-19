@@ -28,18 +28,16 @@ def test_get_questions_list(client):
 
 def test_get_question_details(client):
     response = client.get('/questions/1')
-    expected_return = [
-        {
-            "id": 1,
-            "question": "O que está escrito na bandeira do Brasil?",
-            "options": [
-                {"id": 1, "description": "Lei e Ordem"},
-                {"id": 2, "description": "Progresso e Caos"},
-                {"id": 3, "description": "Ordem e Progresso"},
-            ],
-            "given_answer": None
-        }
-    ]
+    expected_return = {
+        "id": 1,
+        "question": "O que está escrito na bandeira do Brasil?",
+        "options": [
+            {"id": 1, "description": "Lei e Ordem"},
+            {"id": 2, "description": "Progresso e Caos"},
+            {"id": 3, "description": "Ordem e Progresso"},
+        ],
+        "given_answer": None
+    }
     assert response.text == json.dumps(expected_return)
 
 

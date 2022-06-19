@@ -1,4 +1,3 @@
-
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
@@ -18,6 +17,7 @@ class Seeder():
     def seed_all_tables(cls):
         Question().seed_questions()
         Answer().seed_answers()
+        Option().seed_options()
 
 class Question(Base):
 
@@ -47,7 +47,7 @@ class Question(Base):
 class Answer(Base):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    question_id = db.Column(db.String())
+    question_id = db.Column(db.Integer())
     given_answer = db.Column(db.SmallInteger())
 
     def seed_answers(self):
@@ -59,4 +59,20 @@ class Answer(Base):
         ]
         answers = [Answer(**answer) for answer in answers]
         db.session.bulk_save_objects(answers)
+        db.session.commit()
+
+class Option(Base):
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    description = db.Column(db.String())
+    question_id = db.Column(db.Integer())
+
+    def seed_options(self):
+        options = [
+            {"question_id": 1, "description": "Lei e Ordem"},
+            {"question_id": 1, "description": "Progresso e Caos"},
+            {"question_id": 1, "description": "Ordem e Progresso"}
+        ]
+        options = [Option(**option) for option in options]
+        db.session.bulk_save_objects(options)
         db.session.commit()
