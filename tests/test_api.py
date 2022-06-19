@@ -22,7 +22,7 @@ def test_get_questions_list(client):
         {
             "id": 3,
             "question": "Qual é a capital da Inglaterra?",
-            "given_answer": 2
+            "given_answer": 8
         }
     ]
 
@@ -87,9 +87,9 @@ def test_get_score(client):
     response = client.get('/score')
     
     expected_return = {
-        "right_answers": 1,
-        "wrong_answers": 2,
-        "score": "33%"
+        "right_answers": 2,
+        "wrong_answers": 1,
+        "score": "67%"
         }
 
     assert response.text == json.dumps(expected_return)

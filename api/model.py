@@ -30,11 +30,11 @@ class Question(Base):
             },
             {
                 "question": "Quanto é o produto da multiplicação de 8 por 8?",
-                "right_answer": 1
+                "right_answer": 4
             },
             {
                 "question": "Qual é a capital da Inglaterra?",
-                "right_answer": 1
+                "right_answer": 8
             }
         ]
         questions = [Question(**question) for question in questions]
@@ -51,7 +51,7 @@ class Answer(Base):
         answers = [
             {
                 "question_id": 3,
-                "given_answer": 2
+                "given_answer": 8
             }
         ]
         answers = [Answer(**answer) for answer in answers]
@@ -68,7 +68,13 @@ class Option(Base):
         options = [
             {"question_id": 1, "description": "Lei e Ordem"},
             {"question_id": 1, "description": "Progresso e Caos"},
-            {"question_id": 1, "description": "Ordem e Progresso"}
+            {"question_id": 1, "description": "Ordem e Progresso"},
+            {"question_id": 2, "description": "64"},
+            {"question_id": 2, "description": "46"},
+            {"question_id": 2, "description": "58"},
+            {"question_id": 3, "description": "Bristol"},
+            {"question_id": 3, "description": "Londres"},
+            {"question_id": 3, "description": "Manchester"}
         ]
         options = [Option(**option) for option in options]
         db.session.bulk_save_objects(options)
