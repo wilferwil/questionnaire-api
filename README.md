@@ -10,7 +10,9 @@ After you certify that you have Docker installed on your system, to start the ap
 <pre><code>docker-compose up</code></pre>
 
 And to run unit tests you must run the following command:
-<pre><code>python -m pytest tests/</code></pre>
+
+<pre><code>docker exec -ti questionnaire-api_app_1 sh</code></pre>
+<pre><code>python -m pytest</code></pre>
 
 ## API Usage / Endpoints:
 
